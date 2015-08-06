@@ -164,3 +164,42 @@ INSERT INTO PAYROLL (EMPLOYEE_ID, STARTDATE, ENDDATE, PAYDATE)VALUES
 
 INSERT INTO PAYROLL (EMPLOYEE_ID, STARTDATE, ENDDATE, PAYDATE)VALUES
 ('102', '20/7/2015', '26/7/2015', '29/7/2015');
+
+
+https://www.youtube.com/watch?v=2orrUVCrrJo --> connect Oracle database using Eclipse
+
+Download Eclipse JEE version and JDBC Driver Oracle
+
+JavaVid https://www.youtube.com/watch?v=2orrUVCrrJo
+
+Clone URL
+https://github.com/Anjali-Khandelwal/Project-Emp_Salary.git
+
+
+package Payroll;
+
+import java.sql.*;
+
+public class PayrollDatabase {
+
+	public static void main(String[] args) {
+		try
+		{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:thanh","payroll","AnhChi0912");
+		Statement st=con.createStatement();
+		String sql="Select * from Employee";
+		ResultSet rs=st.executeQuery(sql);
+		while (rs.next())
+			System.out.println(rs.getInt(1)+" "+rs.getString(2));
+		con.close();
+		}
+		catch (Exception e)
+		{
+		 System.out.println(e);
+		}
+
+	}
+
+}
+
